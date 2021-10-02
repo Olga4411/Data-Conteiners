@@ -209,6 +209,7 @@ public:
 };
 
 //#define BASE_CHECK
+//#define ITERATORS_CHECK
 void main()
 {
 	setlocale(LC_ALL, "");
@@ -225,6 +226,7 @@ void main()
 	list.reverse_print();
 #endif //  BASE_CHECK
 
+#ifdef ITERATORS_CHECK
 	List list = { 3,5,8,13,21 };
 	list = list;
 	list.print();
@@ -238,6 +240,32 @@ void main()
 	}
 	cout << endl;
 	list2.reverse_print();
+#endif // ITERATORS_CHECK
+
+	double arr[] = { 3.5,5.8,8.8,13.2,21.9 };
+	cout << sizeof(arr) << endl;
+	for (int i = 0; i < sizeof(arr)/sizeof(*arr); i++)// оператор [] возвращает значение по индексу
+	{
+		//cout << arr[i] << *(arr+i)<<"\t";
+		cout << *(arr + i) << "\t";
+	}
+	cout << endl;
+	for (int i : arr)//Range-based for intended to work only with containers
+	{
+		cout << i << "\t";
+	}
+	cout << endl;
+	/*for (type i : conteiner)
+	{
+		//i-iterator;
+	}*/
+
+	List list = { 0,1,1,2,3,5,8,13,21 };
+	for (double i : list)
+	{
+		cout << i << "\t";
+	}
+	cout << endl;
 
 
 }
