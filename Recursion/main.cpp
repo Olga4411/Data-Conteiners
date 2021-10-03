@@ -33,16 +33,19 @@ int factorial(int n)
 	return n == 0 ? 1 : n * factorial(n - 1);
 }
 
-double power(int a, int n)
+double power(double a, int n)
 {
 	/*if (n == 0)return 1;//1-это константа
+	int N=a*power(a,n-1);
+	return N;
+
 	if (n < 0)
 	{
-		return 1./a * power(a, n + 1);
+		return 1/a * power(a, n + 1);
 	}
 	return a * power(a, n - 1);*/
 
-	return n == 0 ? 1 : n > 0 ? a * power(a, n - 1) : 1. / a * power(a, n + 1);
+	return n == 0 ? 1 : n > 0 ? a * power(a, n - 1) : 1 / a * power(a, n + 1);
 }
 
 
@@ -66,10 +69,12 @@ void main()
 #endif // FACTORIAL
 
 #ifdef POWER
-	int a;
+	double a;
 	int n;
-	cout << "¬ведите основание и показатель степени: "; cin >> a >> n;
+	cout << "¬ведите основание степени: "; cin >> a;
+	cout << "¬ведите показатель степени: "; cin >> n;
 	cout << power(a, n) << endl;
+	main();
 #endif // POWER
 
 	
