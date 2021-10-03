@@ -5,14 +5,13 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-template<typename T>
 class Element
 {
 	static int count;
-	T Data;		//Значение элемента
+	int Data;		//Значение элемента
 	Element* pNext;	//Адрес следующего элемента
 public:
-	Element(T Data, Element* pNext = nullptr) :Data(Data), pNext(pNext)
+	Element(int Data, Element* pNext = nullptr) :Data(Data), pNext(pNext)
 	{
 		count++;
 		cout << "EConstructor:\t" << this << endl;
@@ -88,7 +87,7 @@ public:
 		//и Голове больше не на что указывать.
 		cout << "LConstructor:\t" << this << endl;
 	}
-	ForwardList(const initializer_list<T>& il) :
+	ForwardList(const initializer_list<int>& il) :
 		ForwardList()//Делегируем конструктор по умолчанию, чтобы НЕ создавать пустой список вручную
 	{
 		//begin();	//Возвращает Итератор на начало контейнера
@@ -123,7 +122,7 @@ public:
 	}
 
 	//						Adding elements:
-	void push_front(T Data)
+	void push_front(int Data)
 	{
 		//1) Создаем новый элемент:
 		Element* New = new Element(Data);
@@ -134,7 +133,7 @@ public:
 
 		size++;
 	}
-	void push_back(T Data)
+	void push_back(int Data)
 	{
 		if (Head == nullptr) return	push_front(Data);
 		Element* Temp = Head;
@@ -147,7 +146,7 @@ public:
 		Temp->pNext = new Element(Data);
 		size++;
 	}
-	void insert(int Index, T Data)
+	void insert(int Index, int Data)
 	{
 		if (Index == 0)return push_front(Data);
 		if (Index >= size)return push_back(Data);
